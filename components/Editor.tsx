@@ -10,17 +10,17 @@ import { FontFamily } from '@tiptap/extension-font-family';
 import { TextStyle } from '@tiptap/extension-text-style';
 import { Heading } from '@tiptap/extension-heading';
 import { Button, buttonVariants } from '@/components/ui/button';
-import { 
-  Bold, Italic, Underline as UnderlineIcon, 
-  List, ListOrdered, AlignLeft, AlignCenter, 
+import {
+  Bold, Italic, Underline as UnderlineIcon,
+  List, ListOrdered, AlignLeft, AlignCenter,
   AlignRight, AlignJustify, Heading1, Heading2, Heading3, Heading4, Link as LinkIcon,
   Image as ImageIcon, Undo, Redo, Eraser, Scissors, Upload, Link2, X, Type
 } from 'lucide-react';
-import { 
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useState, useRef, forwardRef, useImperativeHandle } from 'react';
 import { cn } from '@/lib/utils';
@@ -154,10 +154,10 @@ const Editor = forwardRef<EditorRef, EditorProps>(({ content, onChange }, ref) =
                 <X className="h-4 w-4" />
               </Button>
             </div>
-            
+
             <div className="p-4">
               <div className="flex p-1 bg-slate-100 rounded-lg mb-4">
-                <button 
+                <button
                   className={cn(
                     "flex-1 flex items-center justify-center gap-2 py-1.5 text-xs font-bold rounded-md transition-all",
                     activeTab === 'url' ? "bg-white shadow-sm text-indigo-600" : "text-slate-500 hover:text-slate-700"
@@ -167,7 +167,7 @@ const Editor = forwardRef<EditorRef, EditorProps>(({ content, onChange }, ref) =
                   <Link2 className="h-3.5 w-3.5" />
                   URL
                 </button>
-                <button 
+                <button
                   className={cn(
                     "flex-1 flex items-center justify-center gap-2 py-1.5 text-xs font-bold rounded-md transition-all",
                     activeTab === 'upload' ? "bg-white shadow-sm text-indigo-600" : "text-slate-500 hover:text-slate-700"
@@ -183,9 +183,9 @@ const Editor = forwardRef<EditorRef, EditorProps>(({ content, onChange }, ref) =
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Link da Imagem</label>
-                    <input 
+                    <input
                       type="text"
-                      placeholder="https://exemplo.com/imagem.jpg" 
+                      placeholder="https://exemplo.com/imagem.jpg"
                       className="w-full h-10 px-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
                       value={imageUrl}
                       onChange={(e) => setImageUrl(e.target.value)}
@@ -198,7 +198,7 @@ const Editor = forwardRef<EditorRef, EditorProps>(({ content, onChange }, ref) =
                   </Button>
                 </div>
               ) : (
-                <div 
+                <div
                   className="border-2 border-dashed border-slate-200 rounded-xl p-10 text-center cursor-pointer hover:bg-slate-50 hover:border-indigo-300 transition-all group"
                   onClick={() => fileInputRef.current?.click()}
                 >
@@ -207,10 +207,10 @@ const Editor = forwardRef<EditorRef, EditorProps>(({ content, onChange }, ref) =
                   </div>
                   <p className="text-sm font-medium text-slate-700">Clique para selecionar</p>
                   <p className="text-xs text-slate-400 mt-1">ou arraste uma imagem aqui</p>
-                  <input 
-                    type="file" 
-                    ref={fileInputRef} 
-                    className="hidden" 
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    className="hidden"
                     accept="image/*"
                     onChange={handleFileUpload}
                   />
@@ -248,12 +248,12 @@ const Editor = forwardRef<EditorRef, EditorProps>(({ content, onChange }, ref) =
             <UnderlineIcon className="h-3.5 w-3.5" />
           </Button>
         </div>
-        
+
         <div className="flex flex-wrap gap-1.5">
           <DropdownMenu>
             <DropdownMenuTrigger className={cn(buttonVariants({ variant: 'ghost', size: 'sm' }), "h-8 gap-2 px-2 text-xs font-bold text-slate-500 hover:text-indigo-600 transition-colors cursor-pointer outline-none")}>
-                <Type className="h-3.5 w-3.5 text-indigo-500" />
-                <span className="hidden sm:inline">Fonte</span>
+              <Type className="h-3.5 w-3.5 text-indigo-500" />
+              <span className="hidden sm:inline">Fonte</span>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-48">
               <DropdownMenuItem onClick={() => editor.chain().focus().setFontFamily('Inter').run()} className="font-sans">Inter (Padrão)</DropdownMenuItem>
@@ -369,19 +369,19 @@ const Editor = forwardRef<EditorRef, EditorProps>(({ content, onChange }, ref) =
           <Button variant="ghost" size="icon" onClick={() => setIsImageModalOpen(true)} className="h-8 w-8">
             <ImageIcon className="h-3.5 w-3.5" />
           </Button>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={() => editor.chain().focus().unsetAllMarks().clearNodes().run()} 
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => editor.chain().focus().unsetAllMarks().clearNodes().run()}
             className="h-8 w-8"
             title="Limpar Formatação"
           >
             <Eraser className="h-3.5 w-3.5" />
           </Button>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={() => editor.chain().focus().setHorizontalRule().run()} 
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => editor.chain().focus().setHorizontalRule().run()}
             className="h-8 w-8"
             title="Inserir Quebra de Página"
           >
@@ -404,16 +404,8 @@ const Editor = forwardRef<EditorRef, EditorProps>(({ content, onChange }, ref) =
           </div>
         </div>
       </div>
-      <div className="relative">
+      <div className="relative bg-slate-200/40 p-12 overflow-x-auto rounded-b-md border-x border-b border-slate-200">
         <EditorContent editor={editor} />
-        {/* Visual Page Indicators - More subtle for the integrated view */}
-        <div className="absolute top-0 right-[-24px] h-full hidden xl:flex flex-col gap-[1050px] pt-[1050px] pointer-events-none">
-          {Array.from({ length: pageCount }).map((_, i) => (
-            <div key={i} className="text-[9px] font-bold text-slate-300 uppercase tracking-widest whitespace-nowrap rotate-90 origin-left">
-              Pág {i + 1}
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );
